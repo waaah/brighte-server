@@ -1,4 +1,4 @@
-import { helloResolver } from "../../../resolvers/hello.resolver";
+import { helloResolver } from "../../../resolvers/hello/hello.resolver";
 
 describe("hello.resolver.spec.ts", () => {
   it("should return a greeting", () => {

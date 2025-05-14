@@ -1,9 +1,13 @@
-import { helloResolver } from "./hello.resolver";
+import helloTypeDefs from "./hello/hello";
+import { helloResolver } from "./hello/hello.resolver";
 import { leadResolver } from "./lead/lead.resolver";
+import leadTypeDefs from "./lead/lead.typedefs";
 
-const resolvers = {
+export const resolvers = {
   ...helloResolver,
-  ...leadResolver
+  ...leadResolver,
 };
+
+export const typeDefs = [helloTypeDefs, leadTypeDefs];
 
 export default resolvers;
