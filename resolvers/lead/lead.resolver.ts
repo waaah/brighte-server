@@ -20,14 +20,13 @@ export const leadResolver = {
       _args: GetLeadsArgs,
       context: MainContext
     ) => {
-      try {
-        const { services } = _args;
-        return await context.leadService.find({ services });
-      } catch (error) {
+      const { services } = _args;
+      const leads = await context.leadService.find({ services });
+      if (leads.length === 0)
         throw new Error(
           "Cannot find any lead that matches the search criteria"
         );
-      }
+      return leads;
     },
   },
   Mutation: {
