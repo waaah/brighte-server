@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { Services } from "./Service"
 
 @Entity()
 export class Lead extends BaseEntity {
@@ -16,4 +17,7 @@ export class Lead extends BaseEntity {
 
     @Column()
     postcode: string
+
+    @OneToMany(() => Services, (service) => service.lead)
+    services: Services[]
 }

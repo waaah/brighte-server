@@ -16,7 +16,7 @@ export const leadResolver = {
                 const { name, postcode, email, mobile } = _args;
                 return await context.leadService.find(name, mobile, email, postcode);
             } catch (error) {
-                throw new Error("Cannot find leads")
+                throw new Error("Cannot find any lead that matches the search criteria")
             }
         }
     },
@@ -27,7 +27,6 @@ export const leadResolver = {
                 await context.leadService.create({ name, email, mobile, postcode });
                 return "Lead registered successfully";
             } catch (error) {
-                console.error(error)
                 throw new Error("Cannot register lead")
             }
         }

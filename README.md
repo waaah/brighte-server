@@ -1,6 +1,6 @@
 # Brighte Server
 
-A simple GraphQL endpoint built on Express that can run on a virtual machine or serverless platform.
+A simple GraphQL endpoint built on Express 
 
 ## How to start the application?
 
