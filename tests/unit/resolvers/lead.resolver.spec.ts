@@ -5,6 +5,7 @@ import { LeadService } from "../../../services/lead/LeadService";
 import sinon from "sinon";
 import { MainContext } from "../../../types/main.context";
 import assert from "assert";
+import { ServiceTypes } from "../../../types/service-type";
 
 describe("lead.resolver.spec.ts", () => {
   let leadService: sinon.SinonStubbedInstance<LeadService>;
@@ -94,11 +95,11 @@ describe("lead.resolver.spec.ts", () => {
       await leadResolver.Mutation.register(
         undefined,
         {
-          services: [],
-          name: "",
-          mobile: "",
-          email: "",
-          postcode: "",
+          name: "Randy Santiago",
+          email: "randy@gmail.com",
+          mobile: "09205346064",
+          postcode: "1104",
+          services: [ServiceTypes.payment],
         },
         { leadService }
       );
@@ -114,11 +115,11 @@ describe("lead.resolver.spec.ts", () => {
         await leadResolver.Mutation.register(
           undefined,
           {
-            services: [],
-            name: "",
-            mobile: "",
-            email: "",
-            postcode: "",
+            name: "Randy Santiago",
+            email: "randy@gmail.com",
+            mobile: "09205346064",
+            postcode: "1104",
+            services: [ServiceTypes.payment],
           },
           { leadService }
         );

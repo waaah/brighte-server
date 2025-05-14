@@ -1,3 +1,4 @@
+import { registerLeadValidator } from "../../schema/validators/registerlead.validator";
 import { MainContext } from "../../types/main.context";
 import { GetLeadArgs, GetLeadsArgs, RegisterLeadArgs } from "./lead.args";
 
@@ -35,6 +36,12 @@ export const leadResolver = {
       _args: RegisterLeadArgs,
       context: MainContext
     ) => {
+      const validation = registerLeadValidator.validate(_args);
+
+      if (validation.error) {
+        throw new Error(validation.error.message);
+      }
+
       try {
         const { name, email, mobile, postcode, services } = _args;
         await context.leadService.create({
@@ -46,7 +53,7 @@ export const leadResolver = {
         });
         return "Lead registered successfully";
       } catch (error) {
-        throw new Error("Cannot register lead");
+        throw new Error("An error occurred in creating a new lead");
       }
     },
   },
