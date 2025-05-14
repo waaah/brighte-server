@@ -16,10 +16,12 @@ export class LeadService {
 
     find(name?: string, mobile?: string, email?: string, postcode?: string) {
         const where: FindOptionsWhere<Lead> = {}
-        if (where.name) where.name = name;
-        if (where.postcode) where.postcode = postcode;
-        if (where.postcode) where.email = email;
-        if (where.postcode) where.mobile = mobile;
+
+        if (name) where.name = name;
+        if (postcode) where.postcode = postcode;
+        if (email) where.email = email;
+        if (mobile) where.mobile = mobile;
+
         return this.leadRepository.find({ where });
     }
 

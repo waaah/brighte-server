@@ -5,6 +5,8 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import resolvers from "./resolvers";
 import typeDefs from "./schema/typeDefs";
 import { AppDataSource } from "./data-source"
+import { LeadService } from "./services/LeadService";
+import { Lead } from "./schema/db/entity/Lead";
 
 // Sample schema and resolver
 
@@ -19,5 +21,7 @@ AppDataSource.initialize().then(() => {
 
 startStandaloneServer(server, {
   listen: { port: config.appConfig.PORT as number },
-})
-  .then(() => console.log("Running GraphQL server"));
+  context: async () => ({
+    leadService: new LeadService(AppDataSource.getRepository(Lead))
+  })
+}).then(() => console.log("Running GraphQL server"));
