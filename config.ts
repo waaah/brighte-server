@@ -10,7 +10,8 @@ const dbConfig = {
   PASSWORD: process.env.DB_PASSWORD || "pgpassword",
   HOST: process.env.DB_HOST || "localhost",
   DATABASE: process.env.DATABASE || "brighte",
-  SYNCHRONIZE: process.env.DB_SYNCHRONIZE ? Boolean(process.env.DB_SYNCHRONIZE) : true,
+  SYNCHRONIZE: process.env.NODE_ENV !== "prod",
+  LOGGING: process.env.NODE_ENV !== "prod",
 };
 
 const config = {

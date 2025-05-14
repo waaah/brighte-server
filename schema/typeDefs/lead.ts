@@ -8,9 +8,14 @@ const leadTypeDefs = `#graphql
         email: String!
         mobile: String!
         postcode: String!
+        services: [Service]!
     }
 
-    enum Services {
+    type Service {
+        name: ServiceType
+    }
+
+    enum ServiceType {
         delivery
         pickup
         payment
@@ -18,13 +23,7 @@ const leadTypeDefs = `#graphql
 
     type Query {
         lead(id: ID!): Lead
-        leads(
-            name: String, 
-            email: String, 
-            mobile: String, 
-            postcode: String,
-            services: [Services]
-        ): [Lead]
+        leads(services: [ServiceType]): [Lead]
     }
 
     type Mutation {
@@ -33,7 +32,7 @@ const leadTypeDefs = `#graphql
             email: String!
             mobile: String!
             postcode: String!
-            services: [Services]!
+            services: [ServiceType]!
         ): String
     }
 `;

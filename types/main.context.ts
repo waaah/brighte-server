@@ -1,5 +1,5 @@
-import { LeadService } from "../services/LeadService"
+import { LeadService } from "../services/lead/LeadService";
 
-export type MainContext {
-    leadService: LeadService
-}
+export type MainContext = {
+  leadService: LeadService;
+};

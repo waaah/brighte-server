@@ -1,23 +1,29 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { Services } from "./Service"
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Service } from "./Service";
 
 @Entity()
 export class Lead extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    id: number
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    name: string
+  @Column()
+  name: string;
 
-    @Column()
-    email: string
+  @Column()
+  email: string;
 
-    @Column()
-    mobile: string
+  @Column()
+  mobile: string;
 
-    @Column()
-    postcode: string
+  @Column()
+  postcode: string;
 
-    @OneToMany(() => Services, (service) => service.lead)
-    services: Services[]
+  @OneToMany(() => Service, (service) => service.lead)
+  services: Service[];
 }

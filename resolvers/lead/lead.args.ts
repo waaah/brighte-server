@@ -1,17 +1,17 @@
+import { ServiceTypes } from "../../types/service-type";
+
 export type GetLeadArgs = {
-    id: number;
-}
+  id: number;
+};
 
 export type GetLeadsArgs = {
-    name?: string;
-    mobile?: string;
-    email?: string;
-    postcode?: string;
-}
+  services?: ServiceTypes[];
+};
 
 export type RegisterLeadArgs = {
-    name: string;
-    mobile: string;
-    email: string;
-    postcode: string;
-}
+  name: string;
+  mobile: string;
+  email: string;
+  postcode: string;
+  services: ServiceTypes[];
+};

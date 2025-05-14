@@ -1,14 +1,12 @@
-import express from "express";
 import config from "./config";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import resolvers from "./resolvers";
 import typeDefs from "./schema/typeDefs";
-import { AppDataSource } from "./data-source"
-import { LeadService } from "./services/LeadService";
+import { AppDataSource } from "./data-source";
+import { LeadService } from "./services/lead/LeadService";
 import { Lead } from "./schema/db/entity/Lead";
-
-// Sample schema and resolver
+import { Service } from "./schema/db/entity/Service";
 
 const server = new ApolloServer({
   typeDefs,
@@ -16,12 +14,15 @@ const server = new ApolloServer({
 });
 
 AppDataSource.initialize().then(() => {
-  console.log("Data Source has been initialized!")
-})
+  console.log("Data Source has been initialized!");
+});
 
 startStandaloneServer(server, {
   listen: { port: config.appConfig.PORT as number },
   context: async () => ({
-    leadService: new LeadService(AppDataSource.getRepository(Lead))
-  })
+    leadService: new LeadService(
+      AppDataSource.getRepository(Lead),
+      AppDataSource.getRepository(Service)
+    ),
+  }),
 }).then(() => console.log("Running GraphQL server"));
