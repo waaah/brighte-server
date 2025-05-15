@@ -28,7 +28,7 @@ const startApp = async () => {
   });
 
   console.log(`Running GraphQL server at: ${url}`);
-  console.log(`Access GraphQL Playground at: ${url}/graphQL`);
+  console.log(`Access GraphQL Playground at: ${url}graphql`);
 };
 
 startApp();

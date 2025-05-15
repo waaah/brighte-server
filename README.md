@@ -13,7 +13,7 @@ A simple GraphQL endpoint built on Express
 
 1.  Install the required dependencies
 
-Use `npm install` to install all dependencies needed to run the application
+Use `npm install` to install all dependencies needed to run the application.
 
 - `npm install`
 
@@ -32,11 +32,13 @@ You can run the application using any of the commands below
 - `npm run start` - Runs the application as is without automatic restart on changes
 - `npm run start:watch` - Runs the application in watch mode, meaning changes are detected and the app is restarted
 
-### 3. Running a sample request.
+4. Explore the GraphQL documentation through the Apollo Studio Sandbox
 
-For dev purposes, you can run the GraphQL playground on your local server at `http://localhost:4000/graphql`
+Once the application is running, explore the API documentation at `<HOST>/graphql` on your web browser to test the API.
 
-### 4. Create a .env file (optional)
+If the port is not changed, you can see the documentation at: `http://localhost:3000/graphql`. This documentation will contain all the various Queries and Mutations that are used in this API.
+
+### 3. Create a .env file (optional)
 
 The application will automatically run without an .env file but you can customize the configuration like database connection etc.
 
@@ -46,7 +48,7 @@ The application will automatically run without an .env file but you can customiz
 
    ```
    const dbConfig = {
-    PASSWORD: process.env.DB_PASSWORD || 'pgpassword'
+    PASSWORD: process.env.DB_PASSWORD || ''
    }
    ```
 
@@ -72,3 +74,6 @@ The application will automatically run without an .env file but you can customiz
 6. `npm run db:bootstrap` - Bootstraps a new containerized database instance
 7. `npm run db:migrate:generate` - Automatically generates a new migration based on entity changes
 8. `npm run db:migrate:run` - Runs any new migration changes
+9. `npm run db:start` - Starts the Containerized Database if its not running. If the container does not exist, run `npm run db:bootstrap` 
+9. `npm run db:stop` - Stops the Containerized Database. If the container does not exist, run `npm run db:bootstrap` 
+

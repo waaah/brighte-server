@@ -13,7 +13,7 @@
     "test": "jest",
     "test:integration": "jest tests/integration/**",
     "test:unit": "jest tests/unit/**",
-    "db:stop": "docker stop brighte-postgres && docker rm brighte-postgres",
+    "db:stop": "docker stop brighte-postgres",
     "db:start": "docker start brighte-postgres",
     "db:create": "docker run --name brighte-postgres -e POSTGRES_DB=brighte -e POSTGRES_USER=pguser -e POSTGRES_PASSWORD=pgpassword -p 5432:5432 -d postgres",
     "db:bootstrap": "npm run db:create && npm run db:migrate:run",
